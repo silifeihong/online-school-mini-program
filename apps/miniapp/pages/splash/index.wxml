@@ -1,0 +1,15 @@
+<view class="splash-container">
+  <!-- 品牌区：蓝底圆角 Logo + 标题 + 副标题 + 价值点，按 Figma 启动页设计（379:12） -->
+  <view class="brand">
+    <view class="logo-block">
+      <image class="logo-icon" src="/static/images/book-open.png" mode="aspectFit"></image>
+    </view>
+    <text class="app-name">考研资料库</text>
+    <text class="slogan">精选课程与备考资料，陪你稳步上岸</text>
+    <view class="highlights">
+      <text class="highlight-item">实用资讯</text>
+      <text class="highlight-item">系统课程</text>
+      <text class="highlight-item">精选资料</text>
+    </view>
+  </view>
+</view>

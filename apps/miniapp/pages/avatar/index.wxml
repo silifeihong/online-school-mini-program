@@ -1,0 +1,23 @@
+<view class="page">
+  <!-- 头像预览：点击选图 -->
+  <view class="avatar-box" bindtap="onChooseImage">
+    <image
+      wx:if="{{chosenPath || currentAvatar}}"
+      class="avatar-img"
+      src="{{chosenPath || currentAvatar}}"
+      mode="aspectFill"
+    />
+    <view wx:else class="avatar-ph"></view>
+    <view class="choose-badge">点击选择图片</view>
+  </view>
+
+  <view class="tip">支持 jpg / png 等图片格式，大小不超过 5MB，建议选择正方形图片</view>
+
+  <button
+    class="btn-save {{chosenPath ? 'active' : ''}}"
+    disabled="{{!chosenPath || uploading}}"
+    bindtap="onSave"
+  >
+    {{uploading ? '上传中...' : '保存头像'}}
+  </button>
+</view>

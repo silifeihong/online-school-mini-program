@@ -1,0 +1,42 @@
+{
+  "name": "online-school-mini-program",
+  "version": "0.1.0",
+  "private": true,
+  "description": "在线网校系统 - 微信小程序 + PC管理后台",
+  "scripts": {
+    "dev:api": "pnpm --filter @online-school/api dev",
+    "dev:admin": "pnpm --filter @online-school/admin-web dev",
+    "build:api": "pnpm --filter @online-school/api build",
+    "build:admin": "pnpm --filter @online-school/admin-web build",
+    "lint": "eslint . --ext .ts,.tsx,.vue,.js,.jsx",
+    "format": "prettier --write \"**/*.{ts,tsx,vue,js,jsx,json,md}\"",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "eslint": "^8.54.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-vue": "^9.19.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.1.0",
+    "typescript": "^5.3.2"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,vue}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  }
+}

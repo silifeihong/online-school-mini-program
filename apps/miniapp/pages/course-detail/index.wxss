@@ -1,0 +1,311 @@
+.page {
+  min-height: 100vh;
+  background: #f7f8fa;
+  padding: 16px 16px 0;
+  box-sizing: border-box;
+}
+
+/* ---------- 封面区 ---------- */
+.hero {
+  width: 100%;
+  height: 156px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-ph {
+  width: 100%;
+  height: 100%;
+  background: #eff5ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+.hero-cat {
+  font-size: 12px;
+  font-weight: 700;
+  color: #2563eb;
+}
+
+.hero-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #2563eb;
+  text-align: center;
+}
+
+.hero-sub {
+  font-size: 12px;
+  color: #667085;
+  text-align: center;
+}
+
+/* ---------- 卡片 ---------- */
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 16px;
+  box-sizing: border-box;
+}
+
+.info-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #182230;
+  line-height: 1.3;
+}
+
+.info-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.info-price {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2563eb;
+}
+
+.info-meta {
+  font-size: 12px;
+  color: #667085;
+}
+
+.info-desc {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #667085;
+  line-height: 1.7;
+}
+
+/* ---------- 目录 ---------- */
+.toc-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.toc-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #182230;
+}
+
+.toc-count {
+  font-size: 12px;
+  color: #2563eb;
+}
+
+.toc-empty {
+  padding: 20px 0;
+  text-align: center;
+  font-size: 12px;
+  color: #98a2b3;
+}
+
+.chapter-row {
+  display: flex;
+  align-items: center;
+  min-height: 37px;
+  border-bottom: 1px solid #e7ebf0;
+}
+
+.chapter-row:last-child {
+  border-bottom: none;
+}
+
+.ch-index {
+  width: 24px;
+  font-size: 12px;
+  color: #98a2b3;
+  flex-shrink: 0;
+}
+
+.ch-doc-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  flex-shrink: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563EB' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 2h8l4 4v16H6z'/%3E%3Cpath d='M14 2v4h4'/%3E%3C/svg%3E")
+    no-repeat center / contain;
+}
+
+.ch-title {
+  flex: 1;
+  min-width: 0;
+  font-size: 13px;
+  color: #182230;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ch-tag {
+  flex-shrink: 0;
+  margin-left: 8px;
+  padding: 2px 8px;
+  background: #eff5ff;
+  border-radius: 4px;
+  font-size: 11px;
+  color: #2563eb;
+  line-height: 19px;
+}
+
+.ch-lock {
+  flex-shrink: 0;
+  margin-left: 8px;
+  width: 14px;
+  height: 14px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2398A2B3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='11' width='14' height='9' rx='2'/%3E%3Cpath d='M8 11V7a4 4 0 0 1 8 0v4'/%3E%3C/svg%3E")
+    no-repeat center / contain;
+}
+
+.ch-play {
+  flex-shrink: 0;
+  margin-left: 8px;
+  width: 14px;
+  height: 14px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='10' fill='%232563EB'/%3E%3Cpath d='M10 8l6 4-6 4z' fill='%23FFFFFF'/%3E%3C/svg%3E")
+    no-repeat center / contain;
+}
+
+/* ---------- 底部动作栏 ---------- */
+.bottom-holder {
+  height: 100px;
+}
+
+.action-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 84px;
+  background: #ffffff;
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+}
+
+.action-btn {
+  height: 48px;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-btn-learn {
+  background: #2563eb;
+}
+
+/* ---------- 购买弹窗 ---------- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(24, 34, 48, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.purchase-card {
+  position: relative;
+  width: 300px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px 20px 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pc-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  line-height: 26px;
+  text-align: center;
+  font-size: 20px;
+  color: #98a2b3;
+}
+
+.pc-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #182230;
+}
+
+.pc-desc {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #667085;
+  text-align: center;
+}
+
+.pc-wechat {
+  margin-top: 16px;
+  width: 100%;
+  height: 52px;
+  background: #f7f8fa;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.pc-wechat-icon {
+  width: 22px;
+  height: 22px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2316845C'%3E%3Cpath d='M9.5 4C5.9 4 3 6.5 3 9.6c0 1.7.9 3.2 2.3 4.2l-.6 1.8 2.1-1.1c.6.2 1.2.3 1.8.4-.1-.4-.2-.8-.2-1.2 0-3 2.9-5.4 6.4-5.4h.4C14.7 5.9 12.3 4 9.5 4zm-2.4 3a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8zm4.8 0a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8z'/%3E%3Cpath d='M21 13.7c0-2.6-2.5-4.7-5.5-4.7s-5.5 2.1-5.5 4.7 2.5 4.7 5.5 4.7c.6 0 1.2-.1 1.7-.2l1.9 1-.5-1.6c1.5-.9 2.4-2.3 2.4-3.9zm-7.4-1.2a.8.8 0 1 1 0 1.6.8.8 0 0 1 0-1.6zm3.8 0a.8.8 0 1 1 0 1.6.8.8 0 0 1 0-1.6z'/%3E%3C/svg%3E")
+    no-repeat center / contain;
+}
+
+.pc-wechat-id {
+  font-size: 16px;
+  font-weight: 700;
+  color: #182230;
+  letter-spacing: 0.5px;
+}
+
+.pc-copy-btn {
+  margin-top: 16px;
+  width: 100%;
+  height: 44px;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pc-tip {
+  margin-top: 10px;
+  font-size: 11px;
+  color: #98a2b3;
+}

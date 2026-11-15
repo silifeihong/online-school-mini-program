@@ -1,0 +1,52 @@
+<view class="page" wx:if="{{loaded && course}}">
+  <!-- 播放器区 -->
+  <view class="player">
+    <video
+      wx:if="{{current.content_type === 'video' && videoSrc}}"
+      id="player"
+      class="video"
+      src="{{videoSrc}}"
+      poster="{{course.cover_url || ''}}"
+      controls
+      show-center-play-btn
+      object-fit="contain"
+    ></video>
+    <view wx:elif="{{current.content_type === 'document'}}" class="doc-holder">
+      <view class="doc-big-icon"></view>
+      <text class="doc-holder-text">文档课件已在打开的查看器中显示</text>
+    </view>
+    <view wx:else class="doc-holder">
+      <view class="doc-big-icon"></view>
+      <text class="doc-holder-text">加载中...</text>
+    </view>
+  </view>
+
+  <!-- 当前章节卡 -->
+  <view class="card current-card" wx:if="{{current}}">
+    <view class="cur-course">{{course.title}}</view>
+    <view class="cur-title">{{current.title}}</view>
+    <view class="cur-tag">{{current.stateText}}</view>
+    <view wx:if="{{current.description}}" class="cur-desc">{{current.description}}</view>
+  </view>
+
+  <!-- 章节列表卡 -->
+  <view class="card list-card">
+    <view class="list-head">
+      <text class="list-title">课程章节</text>
+      <text class="list-count">共 {{course.chapter_count}} 课时</text>
+    </view>
+    <view
+      wx:for="{{chapters}}"
+      wx:key="id"
+      class="ch-item {{current.id === item.id ? 'ch-item-active' : ''}}"
+      data-id="{{item.id}}"
+      bindtap="onChapterTap"
+    >
+      <view wx:if="{{item.content_type === 'document'}}" class="ch-doc-icon"></view>
+      <text wx:else class="ch-index">{{item.index}}</text>
+      <text class="ch-name">{{item.title}}</text>
+      <view wx:if="{{item.state === 'trial'}}" class="ch-tag">试看</view>
+      <view wx:elif="{{item.state === 'locked'}}" class="ch-lock"></view>
+    </view>
+  </view>
+</view>

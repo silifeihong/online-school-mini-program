@@ -1,0 +1,28 @@
+<view class="confirm-container">
+  <view class="form-wrapper">
+    <view class="form-title">确认账号</view>
+    <view class="form-desc">请输入注册时使用的邮箱，我们将为您校验账号</view>
+
+    <!-- 邮箱 -->
+    <view class="form-item">
+      <input
+        class="form-input"
+        type="text"
+        placeholder="请输入邮箱"
+        bindinput="onEmailInput"
+        bindblur="onEmailBlur"
+      />
+    </view>
+
+    <!-- 下一步 -->
+    <button
+      class="btn-next {{canNext ? 'active' : ''}}"
+      disabled="{{!canNext || isLoading}}"
+      bindtap="handleNext"
+    >
+      {{isLoading ? '校验中...' : '下一步'}}
+    </button>
+
+    <view class="back-link" bindtap="goBack">返回登录</view>
+  </view>
+</view>

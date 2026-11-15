@@ -1,0 +1,84 @@
+.register-container {
+  min-height: 100vh;
+  padding: 80rpx 48rpx;
+  background: #ffffff;
+}
+
+.form-wrapper {
+  width: 100%;
+}
+
+.form-title {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #182230;
+  margin-bottom: 64rpx;
+}
+
+.form-item {
+  margin-bottom: 32rpx;
+}
+
+.form-input {
+  background: #f7f8fa;
+  border-radius: 12rpx;
+  padding: 28rpx 24rpx;
+  font-size: 28rpx;
+}
+
+.code-item {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.code-input {
+  flex: 1;
+}
+
+.btn-send-code {
+  width: 200rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #e5e7eb;
+  color: #9ca3af;
+  border-radius: 12rpx;
+  font-size: 26rpx;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.btn-send-code.active {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.btn-register {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #e5e7eb;
+  color: #9ca3af;
+  border-radius: 12rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  margin-top: 32rpx;
+  border: none;
+}
+
+.btn-register.active {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.login-entry {
+  text-align: center;
+  margin-top: 48rpx;
+  color: #6b7280;
+  font-size: 26rpx;
+}
+
+.link {
+  color: #2563eb;
+}

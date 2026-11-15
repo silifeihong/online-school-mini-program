@@ -1,0 +1,108 @@
+.profile-container {
+  min-height: 100vh;
+  padding: 60rpx 48rpx;
+  background: #ffffff;
+}
+
+.form-wrapper {
+  width: 100%;
+}
+
+.form-title {
+  font-size: 44rpx;
+  font-weight: bold;
+  color: #182230;
+  margin-bottom: 16rpx;
+}
+
+.form-desc {
+  font-size: 26rpx;
+  color: #6b7280;
+  margin-bottom: 64rpx;
+}
+
+.form-item {
+  margin-bottom: 40rpx;
+}
+
+.form-label {
+  font-size: 28rpx;
+  color: #374151;
+  margin-bottom: 16rpx;
+}
+
+.form-input {
+  background: #f7f8fa;
+  border-radius: 12rpx;
+  padding: 28rpx 24rpx;
+  font-size: 28rpx;
+}
+
+.text-input {
+  width: 100%;
+  box-sizing: border-box;
+  color: #182230;
+  font-size: 28rpx;
+  /* 与 picker 项等高：picker = 上下 padding 28rpx×2 + 文本行高 ≈40rpx ≈ 96rpx。
+     input 是原生组件，垂直 padding 撑高不可靠（border-box 下 height 含 padding 反而裁字），
+     故直接定总高、去掉垂直 padding，由原生 input 自行垂直居中文字 */
+  height: 96rpx;
+  min-height: 96rpx;
+  padding: 0 24rpx;
+}
+
+.input-placeholder {
+  color: #9ca3af;
+}
+
+.picker-value {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #182230;
+}
+
+.picker-value.placeholder {
+  color: #9ca3af;
+}
+
+.picker-arrow {
+  color: #9ca3af;
+  font-size: 24rpx;
+}
+
+.options-tip {
+  padding: 60rpx 0;
+  text-align: center;
+  color: #9ca3af;
+  font-size: 26rpx;
+}
+
+.options-tip.error {
+  color: #f04438;
+}
+
+.btn-submit {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #e5e7eb;
+  color: #9ca3af;
+  border-radius: 12rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  margin-top: 48rpx;
+  border: none;
+}
+
+.btn-submit.active {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.skip-btn {
+  text-align: center;
+  margin-top: 32rpx;
+  color: #2563eb;
+  font-size: 28rpx;
+}

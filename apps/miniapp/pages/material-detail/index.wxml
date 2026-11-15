@@ -1,0 +1,56 @@
+<view class="page" wx:if="{{loaded && material}}">
+  <!-- 文件信息卡（沿用设计稿 PDF 页卡样式） -->
+  <view class="doc-card">
+    <view class="doc-head">
+      <text class="doc-head-cat">免费资料</text>
+    </view>
+    <view class="doc-rule"></view>
+    <view class="doc-title">{{material.title}}</view>
+    <view wx:if="{{metaLine}}" class="doc-meta">{{metaLine}}</view>
+    <view wx:if="{{material.description}}" class="doc-desc">{{material.description}}</view>
+
+    <!-- 图文内容（富文本；展示顺序高于文件） -->
+    <view wx:if="{{contentHtml}}" class="doc-content">
+      <rich-text nodes="{{contentHtml}}"></rich-text>
+    </view>
+
+    <!-- 单个图片文件：页内直接展示文件本体 -->
+    <view wx:if="{{singleImage && previewSrc}}" class="doc-preview">
+      <image class="preview-img" src="{{previewSrc}}" mode="widthFix" bindtap="onPreviewImage" />
+    </view>
+
+    <!-- 多个文件：文件列表，点击逐个查看 -->
+    <view wx:elif="{{filesVM.length > 1}}" class="file-list">
+      <view
+        class="file-row"
+        wx:for="{{filesVM}}"
+        wx:key="idx"
+        data-index="{{item.idx}}"
+        bindtap="onFileTap"
+      >
+        <view class="file-badge">
+          <view wx:if="{{item.isImage}}" class="file-img-icon"></view>
+          <text wx:else class="file-ext">{{item.ext || '文件'}}</text>
+        </view>
+        <view class="file-info">
+          <text class="file-name">{{item.name}}</text>
+          <text wx:if="{{item.meta}}" class="file-meta">{{item.meta}}</text>
+        </view>
+        <text class="file-open">查看 ›</text>
+      </view>
+    </view>
+
+    <!-- 单个文档文件：占位卡（无图文内容时进页自动打开；有图文内容则点击打开） -->
+    <view wx:elif="{{filesVM.length === 1}}" class="doc-preview">
+      <view class="preview-ph" data-index="0" bindtap="onFileTap">
+        <view class="preview-icon"></view>
+        <text class="preview-name">{{filesVM[0].name}}</text>
+        <text class="preview-hint">点击打开文件</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view wx:elif="{{loaded}}" class="page">
+  <view class="empty-tip">资料不存在或已下架</view>
+</view>

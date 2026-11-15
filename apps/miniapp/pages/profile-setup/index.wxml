@@ -1,0 +1,94 @@
+<view class="profile-container">
+  <view class="form-wrapper">
+    <view class="form-title">{{editMode ? '编辑个人信息' : '完善个人信息'}}</view>
+    <view class="form-desc">{{editMode ? '修改昵称与学习信息，保存后立即生效' : '请填写昵称并选择您的学习信息'}}</view>
+
+    <!-- 选项加载中 -->
+    <view wx:if="{{optionsLoading}}" class="options-tip">选项加载中...</view>
+
+    <!-- 选项加载失败 -->
+    <view wx:elif="{{optionsError}}" class="options-tip error" bindtap="loadOptions">
+      选项加载失败，点击重试
+    </view>
+
+    <block wx:else>
+      <!-- 昵称 -->
+      <view class="form-item">
+        <view class="form-label">昵称</view>
+        <input
+          class="form-input text-input"
+          value="{{nickname}}"
+          placeholder="请输入昵称"
+          placeholder-class="input-placeholder"
+          maxlength="30"
+          bindinput="onNicknameInput"
+        />
+      </view>
+
+      <!-- 年级 -->
+      <view class="form-item">
+        <view class="form-label">当前年级</view>
+        <picker
+          mode="selector"
+          range="{{gradeOptions}}"
+          value="{{gradeIndex < 0 ? 0 : gradeIndex}}"
+          bindchange="onGradeChange"
+          disabled="{{gradeOptions.length === 0}}"
+        >
+          <view class="form-input picker-value {{grade ? '' : 'placeholder'}}">
+            <text>{{grade || '请选择年级'}}</text>
+            <text class="picker-arrow">▾</text>
+          </view>
+        </picker>
+      </view>
+
+      <!-- 专业 -->
+      <view class="form-item">
+        <view class="form-label">所学专业</view>
+        <picker
+          mode="selector"
+          range="{{majorOptions}}"
+          value="{{majorIndex < 0 ? 0 : majorIndex}}"
+          bindchange="onMajorChange"
+          disabled="{{majorOptions.length === 0}}"
+        >
+          <view class="form-input picker-value {{major ? '' : 'placeholder'}}">
+            <text>{{major || '请选择专业'}}</text>
+            <text class="picker-arrow">▾</text>
+          </view>
+        </picker>
+      </view>
+
+      <!-- 院校 -->
+      <view class="form-item">
+        <view class="form-label">所属院校</view>
+        <picker
+          mode="selector"
+          range="{{universityOptions}}"
+          value="{{universityIndex < 0 ? 0 : universityIndex}}"
+          bindchange="onUniversityChange"
+          disabled="{{universityOptions.length === 0}}"
+        >
+          <view class="form-input picker-value {{university ? '' : 'placeholder'}}">
+            <text>{{university || '请选择院校'}}</text>
+            <text class="picker-arrow">▾</text>
+          </view>
+        </picker>
+      </view>
+
+      <!-- 提交按钮 -->
+      <button
+        class="btn-submit {{canSubmit ? 'active' : ''}}"
+        disabled="{{!canSubmit || isLoading}}"
+        bindtap="handleSubmit"
+      >
+        {{isLoading ? '保存中...' : '保存'}}
+      </button>
+    </block>
+
+    <!-- 跳过（仅注册后的完善资料流程展示，编辑模式隐藏） -->
+    <view class="skip-btn" wx:if="{{!editMode}}" bindtap="handleSkip">
+      稍后再填
+    </view>
+  </view>
+</view>

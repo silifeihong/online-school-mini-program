@@ -1,0 +1,61 @@
+<view class="page">
+  <!-- 个人信息卡 -->
+  <view class="profile-card">
+    <view class="identity">
+      <view class="avatar" bindtap="onEditAvatar">
+        <image
+          wx:if="{{userInfo.avatar_url}}"
+          class="avatar-img"
+          src="{{userInfo.avatar_url}}"
+          mode="aspectFill"
+        />
+        <view wx:else class="avatar-icon"></view>
+      </view>
+      <view class="identity-info">
+        <view class="nickname">{{userInfo.nickname || '未设置昵称'}}</view>
+        <view class="sub-line" wx:if="{{gradeMajorText}}">{{gradeMajorText}}</view>
+        <view class="sub-line" wx:if="{{universityText}}">所属院校：{{universityText}}</view>
+        <view class="sub-line" wx:if="{{!gradeMajorText && userInfo.email}}">{{userInfo.email}}</view>
+      </view>
+    </view>
+    <view class="edit-row" bindtap="onEditProfile">
+      <text class="edit-text">编辑个人信息</text>
+      <view class="chevron"></view>
+    </view>
+  </view>
+
+  <!-- 我的课程 -->
+  <view class="section">
+    <view class="section-head">
+      <text class="section-title">我的课程</text>
+      <text class="section-count" wx:if="{{courses.length > 0}}">共 {{courses.length}} 门</text>
+    </view>
+
+    <view wx:if="{{coursesLoading}}" class="empty-tip">加载中...</view>
+    <block wx:elif="{{courses.length > 0}}">
+      <view
+        class="course-card"
+        wx:for="{{courses}}"
+        wx:key="id"
+        bindtap="onCourseTap"
+        data-id="{{item.id}}"
+      >
+        <view class="cover {{item.cover_url ? '' : 'cover-ph'}}">
+          <image wx:if="{{item.cover_url}}" class="cover-img" src="{{item.cover_url}}" mode="aspectFill" />
+          <text wx:else class="cover-ph-text">{{item.phText}}</text>
+        </view>
+        <view class="card-body">
+          <view class="card-title">{{item.title}}</view>
+          <view class="tag-row">
+            <text class="tag">{{item.tagText}}</text>
+          </view>
+          <view class="card-meta">{{item.metaText}}</view>
+        </view>
+      </view>
+    </block>
+    <view wx:else class="empty-tip" bindtap="onGoHome">暂无课程，去首页逛逛 ›</view>
+  </view>
+
+  <!-- 退出登录 -->
+  <button class="btn-logout" bindtap="handleLogout">退出登录</button>
+</view>

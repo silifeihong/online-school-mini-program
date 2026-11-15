@@ -1,0 +1,69 @@
+<view class="page" wx:if="{{loaded && course}}">
+  <!-- 封面区 -->
+  <view class="hero">
+    <image wx:if="{{course.cover_url}}" class="hero-img" src="{{course.cover_url}}" mode="aspectFill" />
+    <view wx:else class="hero-ph">
+      <text class="hero-cat">{{course.payment_type === 'free' ? '免费课程' : '精品课程'}}</text>
+      <text class="hero-title">{{course.title}}</text>
+      <text wx:if="{{course.subtitle}}" class="hero-sub">{{course.subtitle}}</text>
+    </view>
+  </view>
+
+  <!-- 信息卡 -->
+  <view class="card info-card">
+    <view class="info-title">{{course.title}}</view>
+    <view class="info-row">
+      <text class="info-price">{{priceText}}</text>
+      <text class="info-meta">{{metaText}}</text>
+    </view>
+    <view wx:if="{{course.description}}" class="info-desc">{{course.description}}</view>
+  </view>
+
+  <!-- 目录卡 -->
+  <view class="card toc-card">
+    <view class="toc-head">
+      <text class="toc-title">课程目录</text>
+      <text class="toc-count">共 {{course.chapter_count}} 课时</text>
+    </view>
+    <view
+      wx:for="{{chapters}}"
+      wx:key="id"
+      class="chapter-row"
+      data-id="{{item.id}}"
+      bindtap="onChapterTap"
+    >
+      <view wx:if="{{item.content_type === 'document'}}" class="ch-doc-icon"></view>
+      <text wx:else class="ch-index">{{item.index}}</text>
+      <text class="ch-title">{{item.title}}</text>
+      <view wx:if="{{item.state === 'trial'}}" class="ch-tag">试看</view>
+      <view wx:elif="{{item.state === 'locked'}}" class="ch-lock"></view>
+      <view wx:else class="ch-play"></view>
+    </view>
+    <view wx:if="{{chapters.length === 0}}" class="toc-empty">暂无章节</view>
+  </view>
+
+  <!-- 底部占位，避免内容被购买栏遮挡 -->
+  <view class="bottom-holder"></view>
+
+  <!-- 底部动作栏 -->
+  <view class="action-bar">
+    <view class="action-btn {{actionMode === 'buy' ? '' : 'action-btn-learn'}}" bindtap="onActionTap">
+      {{actionText}}
+    </view>
+  </view>
+
+  <!-- 微信名片购买弹窗 -->
+  <view wx:if="{{showPurchase}}" class="overlay" bindtap="onClosePurchase">
+    <view class="purchase-card" catchtap="noop">
+      <view class="pc-close" bindtap="onClosePurchase">×</view>
+      <view class="pc-title">联系购买</view>
+      <view class="pc-desc">添加销售微信，购买后即可学习全部 {{course.chapter_count}} 课时</view>
+      <view class="pc-wechat">
+        <view class="pc-wechat-icon"></view>
+        <text class="pc-wechat-id">{{salesWechat}}</text>
+      </view>
+      <view class="pc-copy-btn" bindtap="onCopyWechat">复制微信号</view>
+      <view class="pc-tip">复制后打开微信 → 添加朋友 → 粘贴搜索</view>
+    </view>
+  </view>
+</view>

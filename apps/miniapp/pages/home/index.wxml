@@ -1,0 +1,82 @@
+<view class="page">
+  <!-- 搜索条 -->
+  <view class="search-bar">
+    <view class="search-icon"></view>
+    <input
+      class="search-input"
+      placeholder="搜索课程或资料"
+      placeholder-class="search-ph"
+      value="{{keyword}}"
+      confirm-type="search"
+      bindinput="onSearchInput"
+      bindconfirm="onSearchConfirm"
+    />
+    <view wx:if="{{keyword}}" class="search-clear" bindtap="onClearKeyword">×</view>
+  </view>
+
+  <!-- 内容类型 tabs -->
+  <view class="tabs">
+    <view
+      wx:for="{{tabs}}"
+      wx:key="value"
+      class="tab {{activeTab === item.value ? 'tab-active' : ''}}"
+      data-value="{{item.value}}"
+      bindtap="onTabTap"
+    >
+      <text>{{item.label}}</text>
+      <view wx:if="{{activeTab === item.value}}" class="tab-line"></view>
+    </view>
+  </view>
+
+  <!-- 内容卡片流 -->
+  <view class="feed">
+    <block wx:for="{{items}}" wx:key="key">
+      <!-- 课程卡 -->
+      <view
+        wx:if="{{item.kind === 'course'}}"
+        class="card course-card"
+        data-id="{{item.id}}"
+        bindtap="onCourseTap"
+      >
+        <view class="cover">
+          <image wx:if="{{item.cover_url}}" class="cover-img" src="{{item.cover_url}}" mode="aspectFill" />
+          <view wx:else class="cover-ph">
+            <text class="cover-ph-text">{{item.phText}}</text>
+          </view>
+        </view>
+        <view class="card-body">
+          <view class="tag">课程</view>
+          <view class="card-title">{{item.title}}</view>
+          <view class="card-meta">{{item.meta}}</view>
+          <view class="card-price">{{item.priceText}}</view>
+        </view>
+      </view>
+
+      <!-- 资料卡：整卡点击进资料详情页 -->
+      <view
+        wx:else
+        class="card material-card"
+        data-id="{{item.id}}"
+        bindtap="onMaterialTap"
+      >
+        <view class="cover cover-square">
+          <image wx:if="{{item.cover_url}}" class="cover-img" src="{{item.cover_url}}" mode="aspectFill" />
+          <view wx:else class="cover-ph cover-ph-square">
+            <view class="doc-icon"></view>
+            <text class="cover-ph-text">{{item.phText}}</text>
+          </view>
+        </view>
+        <view class="card-body">
+          <view class="tag">资料</view>
+          <view class="card-title">{{item.title}}</view>
+          <view class="card-meta">{{item.meta}}</view>
+          <view class="view-link">查看资料 ›</view>
+        </view>
+      </view>
+    </block>
+
+    <view wx:if="{{items.length === 0 && !loading}}" class="empty-tip">暂无相关内容</view>
+    <view wx:if="{{loading}}" class="loading-tip">加载中...</view>
+    <view wx:elif="{{finished && items.length > 0}}" class="loading-tip">没有更多了</view>
+  </view>
+</view>

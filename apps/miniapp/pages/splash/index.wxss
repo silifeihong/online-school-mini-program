@@ -1,0 +1,63 @@
+/* 启动页视觉对齐 Figma 设计稿（node 379:12，375x812 基准，1px = 2rpx） */
+.splash-container {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  background: #f7f8fa;
+  box-sizing: border-box;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* 设计稿品牌区距屏顶约 298/812 ≈ 36.7% */
+  padding-top: 36vh;
+}
+
+/* Logo 占位：80x80 蓝底圆角方块 */
+.logo-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 160rpx;
+  height: 160rpx;
+  background: #2563eb;
+  border-radius: 40rpx;
+}
+
+.logo-icon {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+/* 标题 24px Bold #182230，与 Logo 间距 22px */
+.app-name {
+  margin-top: 44rpx;
+  font-size: 48rpx;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #182230;
+}
+
+/* 副标题 14px Regular #667085，与标题间距 12px */
+.slogan {
+  margin-top: 24rpx;
+  font-size: 28rpx;
+  line-height: 1.5;
+  color: #667085;
+  text-align: center;
+}
+
+/* 价值点行：与副标题间距 22+24px，词间距 22px */
+.highlights {
+  display: flex;
+  gap: 44rpx;
+  margin-top: 92rpx;
+}
+
+.highlight-item {
+  font-size: 24rpx;
+  line-height: 1.5;
+  color: #667085;
+}

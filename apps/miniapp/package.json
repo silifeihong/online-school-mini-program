@@ -1,0 +1,17 @@
+{
+  "name": "online-school-miniapp",
+  "version": "1.0.0",
+  "description": "网校小程序",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "mobx-miniprogram": "^4.13.0",
+    "mobx-miniprogram-bindings": "^2.1.0",
+    "tdesign-miniprogram": "^1.5.0"
+  },
+  "devDependencies": {
+    "miniprogram-api-typings": "^3.12.3",
+    "typescript": "^5.3.0"
+  }
+}
